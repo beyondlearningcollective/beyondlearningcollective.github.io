@@ -17,12 +17,14 @@
 
             .input {
                 @apply px-5 p-3 block text-sm font-light rounded-md ;
-                @apply placeholder:text-black bg-FBFAF9 border-B7B7B8;
+                @apply placeholder:text-black bg-FBFAF9 border-E2E2E3;
             }
 
             .content {
                 @apply max-w-6xl mx-auto px-6;
             }
+
+            [x-cloak] { display: none !important; }
         }
     </style>
     <script>
@@ -30,6 +32,7 @@
         theme: {
           extend: {
             colors: {
+              E2E2E3: '#E2E2E3',
               B7B7B8: '#B7B7B8',
               FBFAF9: '#FBFAF9',
               707070: '#707070',
@@ -40,9 +43,10 @@
         }
       }
     </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-<nav class="border-b border-B7B7B8">
+<nav class="border-b border-[#e2e2e3]">
     <div class="content flex items-center py-4">
         <a href="/" class="text-xl text-primary">
             Beyond Learning Collective
@@ -50,9 +54,11 @@
         <button type="button" class="md:hidden ml-auto">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 15" class="stroke-success w-6">
                 <g transform="translate(-3 -7.5)">
-                    <path d="M4.5,18h18" transform="translate(0 -3)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <path d="M4.5,18h18" transform="translate(0 -3)" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round" stroke-width="3"/>
                     <path d="M4.5,9h18" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-                    <path d="M4.5,27h18" transform="translate(0 -6)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <path d="M4.5,27h18" transform="translate(0 -6)" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round" stroke-width="3"/>
                 </g>
             </svg>
         </button>
@@ -81,12 +87,13 @@
     </div>
 </nav>
 
-<main class="content py-4 md:py-8 space-y-12 md:space-y-10">
-    <p class="text-success font-bold">
+<main x-cloak x-data="{step: 1}" class="content py-4 md:py-8 space-y-12 md:space-y-10">
+    <p x-text="step + ' out of 2'" class="text-success font-bold">
         1 out of 2
     </p>
 
-    <form class="max-w-md mx-auto space-y-12 md:space-y-3">
+    <!--  Step 1  -->
+    <form x-show="step === 1" @submit.prevent="step++" class="max-w-md mx-auto space-y-12 md:space-y-3">
         <div class="space-y-3">
             <p class="font-bold text-center">
                 Create your virtual school account
@@ -107,7 +114,7 @@
             </label>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3 !mt-6">
             <button class="btn-success btn-lg w-full" type="submit">
                 Continue
             </button>
@@ -115,6 +122,35 @@
                 Already have an account ? <a href="#" class="hover:underline">Log in</a>
             </p>
             <img src="./assets/img/image-68.svg" alt="" class="mx-auto !mt-5 h-12"/>
+        </div>
+    </form>
+
+    <!--  Step 2  -->
+    <form x-show="step === 2" class="max-w-md mx-auto space-y-12 md:space-y-3">
+        <div class="space-y-3">
+            <p class="font-bold text-center">
+                Create an identity for your school
+            </p>
+            <p class="text-center text-xs font-light">
+                Online home tutoring community
+            </p>
+        </div>
+
+        <div class="space-y-3">
+            <input type="text" class="input w-full" placeholder="Name of school"/>
+            <textarea
+                    class="input w-full"
+                    placeholder="Description of your homeschool, tell us about the wonderful courses that would be taught at your homeschool"
+                    rows="7"
+            ></textarea>
+            <input type="text" class="input w-full" placeholder="Already started your own homeschool ?"/>
+            <input type="text" class="input w-full" placeholder="How many students have you ?"/>
+        </div>
+
+        <div class="space-y-3 !mt-6">
+            <button class="btn-success btn-lg w-full" type="submit">
+                Continue
+            </button>
         </div>
     </form>
 </main>
