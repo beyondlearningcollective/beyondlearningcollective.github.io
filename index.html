@@ -1,1 +1,122 @@
-Hello World
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.6.96/css/materialdesignicons.min.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .btn-success {
+                @apply p-1 px-2 bg-success text-white font-semibold rounded-md hover:opacity-90 transition;
+            }
+
+            .btn-lg {
+                @apply p-3 rounded-xl;
+            }
+
+            .input {
+                @apply px-5 p-3 block text-sm font-light rounded-md ;
+                @apply placeholder:text-black bg-FBFAF9 border-B7B7B8;
+            }
+
+            .content {
+                @apply max-w-6xl mx-auto px-6;
+            }
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              B7B7B8: '#B7B7B8',
+              FBFAF9: '#FBFAF9',
+              707070: '#707070',
+              success: '#89E894',
+              primary: '#4169E1',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body>
+<nav class="border-b border-B7B7B8">
+    <div class="content flex items-center py-4">
+        <a href="/" class="text-xl text-primary">
+            Beyond Learning Collective
+        </a>
+        <button type="button" class="md:hidden ml-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 15" class="stroke-success w-6">
+                <g transform="translate(-3 -7.5)">
+                    <path d="M4.5,18h18" transform="translate(0 -3)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <path d="M4.5,9h18" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <path d="M4.5,27h18" transform="translate(0 -6)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </g>
+            </svg>
+        </button>
+        <ul class="hidden md:flex ml-auto items-center space-x-9 text-sm">
+            <li>
+                <a href="#">
+                    Courses
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    Start a homeschool
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    Login
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block btn-success">
+                    Enroll Now
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main class="content py-4 md:py-8 space-y-12 md:space-y-10">
+    <p class="text-success font-bold">
+        1 out of 2
+    </p>
+
+    <form class="max-w-md mx-auto space-y-12 md:space-y-3">
+        <div class="space-y-3">
+            <p class="font-bold text-center">
+                Create your virtual school account
+            </p>
+            <p class="text-center text-xs font-light">
+                Online tutoring community
+            </p>
+        </div>
+
+        <div class="space-y-3">
+            <input type="text" class="input w-full" placeholder="Full Name"/>
+            <input type="email" class="input w-full" placeholder="Email"/>
+            <input type="password" class="input w-full" placeholder="Password"/>
+            <input type="password" class="input w-full" placeholder="Confirm password"/>
+            <label class="flex items-center text-xs font-light">
+                <input type="checkbox" class="text-success mr-3 focus:ring-success"/>
+                I agree to the Terms of Use and Privacy Policy
+            </label>
+        </div>
+
+        <div class="space-y-3">
+            <button class="btn-success btn-lg w-full" type="submit">
+                Continue
+            </button>
+            <p class="text-center text-xs font-light">
+                Already have an account ? <a href="#" class="hover:underline">Log in</a>
+            </p>
+            <img src="./assets/img/image-68.svg" alt="" class="mx-auto !mt-5 h-12"/>
+        </div>
+    </form>
+</main>
+</body>
+</html>
