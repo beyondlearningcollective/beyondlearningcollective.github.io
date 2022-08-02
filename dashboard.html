@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.6.96/css/materialdesignicons.min.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .btn {
+                @apply p-1 px-2 rounded-md transition;
+            }
+
+            .btn-success {
+                @apply bg-success text-white hover:opacity-90;
+            }
+
+            .btn-lg {
+                @apply p-3 px-5 rounded-xl;
+            }
+
+            .input {
+                @apply px-5 p-3 block text-sm font-light rounded-md ;
+                @apply placeholder:text-black bg-FBFAF9 border-E2E2E3;
+            }
+
+            .content {
+                @apply max-w-6xl mx-auto px-6;
+            }
+
+            [x-cloak] { display: none !important; }
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              E2E2E3: '#E2E2E3',
+              B7B7B8: '#B7B7B8',
+              FBFAF9: '#FBFAF9',
+              707070: '#707070',
+              success: '#89E894',
+              primary: '#4169E1',
+              A1616A: '#A1616A',
+            }
+          }
+        }
+      }
+    </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body x-data="{open: true,}">
+<main x-cloak class="h-screen w-screen overflow-hidden relative flex">
+    <!--  LHS: Main Menu  -->
+    <aside class="absolute inset-y-0 left-0 w-72 lg:w-1/5 flex shadow-xl z-10">
+        <ul class="flex flex-col space-y-8 overflow-y-auto flex-1 p-5 pb-0">
+            <li>
+                <a href="#" class="">
+                    <img src="./assets/img/Beyond-2.png" alt="Beyond" class="object-cover aspect-[3/1] h-16 mx-auto"/>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block btn-success btn-lg flex items-center font-light uppercase">
+                    <img src="./assets/img/icon-awesome-home.svg" class="mr-3"/>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block btn btn-lg flex items-center font-light uppercase">
+                    <img src="./assets/img/icon-awesome-book.svg" class="mr-3"/>
+                    Courses
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block btn btn-lg flex items-center font-light uppercase">
+                    <img src="./assets/img/icon-ionic-ios-people.svg" class="mr-3"/>
+                    Students
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block btn btn-lg flex items-center font-light uppercase">
+                    <img src="./assets/img/icon-awesome-chalkboard-teacher.svg" class="mr-3"/>
+                    Tutors
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block btn btn-lg flex items-center font-light uppercase">
+                    <img src="./assets/img/icon-ionic-ios-time.svg" class="mr-3"/>
+                    Announcements
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block btn btn-lg flex items-center font-light uppercase">
+                    <img src="./assets/img/icon-material-grade.svg" class="mr-3"/>
+                    Earnings
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!--  RHS: Main Content  -->
+    <section
+            :class="open ? 'lg:w-4/5 translate-x-72 lg:translate-x-0' : 'z-10'"
+            class="w-full ml-auto transition-all transform"
+    >
+        <div class="bg-white overflow-y-auto h-full transition-all">
+            <nav class="border-b">
+                <div class="content flex">
+                    <div class="ml-auto flex items-center space-x-3 py-4">
+                        <button class="w-4">
+                            <img src="./assets/img/icon-material-notifications.svg" alt="Notifications"/>
+                        </button>
+                        <div class="bg-gray-100 rounded-full aspect-[1/1] w-8"></div>
+                        <p class="text-primary text-sm font-semibold">
+                            Sontia School
+                        </p>
+                        <i class="mdi mdi-chevron-down text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content p-5 lg:p-10 space-y-8 lg:space-y-7">
+                <article>
+                    <p class="text-xl font-semibold leading-loose">
+                        Hi Sandra Wellington !
+                    </p>
+                    <p class="text-xs lg:text-sm max-w-[50%]">
+                        Welcome to Beyond learning collective,
+                        create a class you would love to teach.
+                    </p>
+                </article>
+
+                <div class="flex flex-col lg:flex-row divide-y divide-white lg:divide-y-0 bg-success/30 rounded-md lg:p-5 lg:items-center justify-between">
+                    <div class="flex items-center justify-between lg:justify-around lg:w-1/2 px-10 py-3 lg:p-0">
+                        <div class="text-center">
+                            <p class="text-3xl font-bold">
+                                2
+                            </p>
+                            <p class="text-xs font-semibold">
+                                Classes
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold">
+                                1
+                            </p>
+                            <p class="text-xs font-semibold">
+                                Tutor
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between lg:justify-around lg:w-1/2 px-10 py-3 lg:p-0">
+                        <div class="text-center">
+                            <p class="text-3xl font-bold">
+                                24
+                            </p>
+                            <p class="text-xs font-semibold">
+                                Students
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold">
+                                0.00
+                            </p>
+                            <p class="text-xs font-semibold">
+                                Active Earning
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-xs lg:text-sm">
+                        Upcoming Classes
+                    </p>
+                    <ul class="grid grid-cols-2 md:grid-cols-4 gap-5 lg:gap-10">
+                        <template hidden x-for="i in 4" :key="i">
+                            <li
+                                    :class="i > 2 && 'hidden md:block'"
+                                    class="bg-A1616A/30 rounded-md p-4 space-y-2"
+                            >
+                                <p class="text-lg font-bold">
+                                    French
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <p class="font-bold text-sm">
+                                        23 students
+                                    </p>
+                                    <p class="text-xs">
+                                        Sat 19, 2022
+                                    </p>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-2 gap-20">
+                    <div class="shadow-xl rounded-md p-5 space-y-2">
+                        <img src="./assets/img/icon-awesome-book-reader.svg" alt=""/>
+                        <p class="font-bold text-xl">
+                            Create a class
+                        </p>
+                        <p class="tex-xs font-lighter">
+                            Create a virtual class invite tutors, students or both.
+                        </p>
+                        <img src="./assets/img/icon-feather-arrow-right-circle.svg" alt=""/>
+                    </div>
+                    <div class="shadow-xl rounded-md p-5 space-y-2">
+                        <img src="./assets/img/icon-material-pageview.svg" alt=""/>
+                        <p class="font-bold text-xl">
+                            View classes
+                        </p>
+                        <p class="tex-xs font-lighter">
+                            View created classes and their course content.
+                        </p>
+                        <img src="./assets/img/icon-feather-arrow-right-circle.svg" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

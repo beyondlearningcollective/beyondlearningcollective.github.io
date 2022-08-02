@@ -93,7 +93,11 @@
     </p>
 
     <!--  Step 1  -->
-    <form x-show="step === 1" @submit.prevent="step++" class="max-w-md mx-auto space-y-12 md:space-y-3">
+    <form
+            x-show="step === 1"
+            @submit.prevent="step++"
+            class="max-w-md mx-auto space-y-12 md:space-y-3"
+    >
         <div class="space-y-3">
             <p class="font-bold text-center">
                 Create your virtual school account
@@ -114,7 +118,7 @@
             </label>
         </div>
 
-        <div class="space-y-3 !mt-6">
+        <div class="space-y-3">
             <button class="btn-success btn-lg w-full" type="submit">
                 Continue
             </button>
@@ -126,7 +130,11 @@
     </form>
 
     <!--  Step 2  -->
-    <form x-show="step === 2" class="max-w-md mx-auto space-y-12 md:space-y-3">
+    <form
+            x-show="step === 2"
+            @submit.prevent="window.location.href = '/dashboard.html'"
+            class="max-w-md mx-auto space-y-12 md:space-y-3"
+    >
         <div class="space-y-3">
             <p class="font-bold text-center">
                 Create an identity for your school
