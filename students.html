@@ -31,6 +31,19 @@
             [x-cloak] {
                 display: none !important;
             }
+
+            table.table-auto {
+                @apply w-full divide-y text-xs text-center;
+            }
+
+            table.table-auto thead th,
+            table.table-auto tbody td {
+                @apply font-normal py-5;
+            }
+
+            table.table-auto tbody {
+                @apply divide-y;
+            }
         }
     </style>
     <script>
@@ -170,6 +183,105 @@
                             No student has enrolled for any of your classes
                         </p>
                     </div>
+                </div>
+
+                <div class="rounded-md shadow-lg border p-3">
+                    <table class="table-auto text-gray-500 !text-sm">
+                        <thead>
+                        <tr>
+                            <th>
+                                Students name
+                            </th>
+                            <th>
+                                Students email
+                            </th>
+                            <th>
+                                Phone Number
+                            </th>
+                            <th>
+                                Payment
+                            </th>
+                            <th>
+                                Students status
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Peter Branson
+                            </td>
+                            <td>
+                                Peter@gmail.com
+                            </td>
+                            <td>
+                                0269099281
+                            </td>
+                            <td>
+                                Paid
+                            </td>
+                            <td>
+                                <p class="text-black">
+                                    Activated
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Peter Branson
+                            </td>
+                            <td>
+                                Peter@gmail.com
+                            </td>
+                            <td>
+                                0269099281
+                            </td>
+                            <td>
+                                Paid
+                            </td>
+                            <td>
+                                <p class="">
+                                    Unactivated
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="rounded-md shadow-lg border p-10">
+                    <ul class="flex items-center space-x-10 text-gray-400">
+                        <li class="font-semibold text-success border-b-2 border-success py-1">
+                            Add manually
+                        </li>
+                        <li class="py-1">
+                            Add by CSV
+                        </li>
+                    </ul>
+
+                    <form class="max-w-2xl mx-auto pt-10">
+                        <div class="space-y-2">
+                            <p class="font-semibold">
+                                First student
+                            </p>
+                            <div class="grid grid-cols-2 gap-5">
+                                <input type="text" class="input !bg-white" placeholder="Full name"/>
+                                <input type="email" class="input !bg-white" placeholder="Email"/>
+                                <input type="tel" class="input !bg-white" placeholder="Phone"/>
+                                <select class="input !bg-white">
+                                    <option value="">
+                                        Select class
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="text-success font-semibold block ml-auto mt-5">
+                            + Add more students
+                        </button>
+                        <button type="submit" class="btn btn-success shadow block mx-auto mt-20 w-48 h-14">
+                            Invite students
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
