@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.6.96/css/materialdesignicons.min.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .btn {
+                @apply p-1 px-2 rounded-md transition;
+            }
+
+            .btn-success {
+                @apply bg-success text-white hover:opacity-90;
+            }
+
+            .btn-lg {
+                @apply p-3 px-5 rounded-xl;
+            }
+
+            .input {
+                @apply px-5 p-3 block text-sm font-light rounded-md ;
+                @apply placeholder:text-black bg-FBFAF9 border-E2E2E3;
+            }
+
+            .content {
+                @apply max-w-6xl mx-auto px-6;
+            }
+
+            [x-cloak] {
+                display: none !important;
+            }
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              E2E2E3: '#E2E2E3',
+              B7B7B8: '#B7B7B8',
+              FBFAF9: '#FBFAF9',
+              707070: '#707070',
+              success: '#89E894',
+              primary: '#4169E1',
+              A1616A: '#A1616A',
+            }
+          }
+        }
+      }
+    </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body x-data="{open: true,}">
+<main x-cloak class="h-screen w-screen overflow-hidden relative flex">
+    <!--  LHS: Main Menu  -->
+    <aside class="absolute inset-y-0 left-0 w-72 lg:w-1/5 flex shadow-xl z-10">
+        <ul class="flex flex-col space-y-8 overflow-y-auto flex-1 p-5 pb-0">
+            <li>
+                <a href="#" class="">
+                    <img src="./assets/img/Beyond-2.png" alt="Beyond" class="object-cover aspect-[3/1] h-16 mx-auto"/>
+                </a>
+            </li>
+            <li>
+                <a href="./dashboard.html" class="block btn btn-lg flex items-center font-light uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 fill-white" viewBox="0 0 24.112 18.75">
+                        <path d="M11.735,7.118,4.018,13.474v6.86a.67.67,0,0,0,.67.67l4.691-.012a.67.67,0,0,0,.666-.67V16.316a.67.67,0,0,1,.67-.67h2.679a.67.67,0,0,1,.67.67v4a.67.67,0,0,0,.67.672L19.421,21a.67.67,0,0,0,.67-.67V13.469L12.376,7.118A.51.51,0,0,0,11.735,7.118Zm12.19,4.32-3.5-2.884v-5.8a.5.5,0,0,0-.5-.5H17.58a.5.5,0,0,0-.5.5V5.8L13.33,2.712a2.009,2.009,0,0,0-2.553,0L.181,11.438a.5.5,0,0,0-.067.707l1.067,1.3a.5.5,0,0,0,.708.068L11.735,5.4a.51.51,0,0,1,.64,0l9.846,8.109a.5.5,0,0,0,.707-.067L24,12.147a.5.5,0,0,0-.071-.709Z"
+                              transform="translate(0.001 -2.254)"/>
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="./schools.html" class="block btn btn-lg flex items-center font-light uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 fill-black" viewBox="0 0 19.897 22.739">
+                        <path d="M19.9,15.989V1.066A1.063,1.063,0,0,0,18.831,0H4.264A4.265,4.265,0,0,0,0,4.264V18.476a4.265,4.265,0,0,0,4.264,4.264H18.831A1.063,1.063,0,0,0,19.9,21.673v-.711a1.074,1.074,0,0,0-.4-.831,9.9,9.9,0,0,1,0-3.318A1.058,1.058,0,0,0,19.9,15.989ZM5.685,5.951a.267.267,0,0,1,.266-.266h9.415a.267.267,0,0,1,.266.266V6.84a.267.267,0,0,1-.266.266H5.951a.267.267,0,0,1-.266-.266Zm0,2.842a.267.267,0,0,1,.266-.266h9.415a.267.267,0,0,1,.266.266v.888a.267.267,0,0,1-.266.266H5.951a.267.267,0,0,1-.266-.266ZM16.939,19.9H4.264a1.421,1.421,0,0,1,0-2.842H16.939A15.989,15.989,0,0,0,16.939,19.9Z"/>
+                    </svg>
+                    Schools
+                </a>
+            </li>
+            <li>
+                <a href="./students.html" class="block btn btn-lg flex items-center font-light uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 fill-black" viewBox="0 0 31.57 20.517">
+                        <g transform="translate(-2.215 -7.748)">
+                            <path d="M24.546,23.534c-.788-.281-2.074-.3-2.644-.513a3.735,3.735,0,0,1-1.223-.57,7.56,7.56,0,0,1-.2-2,3.237,3.237,0,0,0,.7-.984,10.94,10.94,0,0,0,.337-1.934s.464.2.647-.731c.155-.8.45-1.223.373-1.814s-.408-.45-.408-.45a5.265,5.265,0,0,0,.408-2.63,4.208,4.208,0,0,0-4.542-4.155A4.222,4.222,0,0,0,13.437,11.9a5.343,5.343,0,0,0,.4,2.63s-.33-.141-.408.45S13.641,16,13.8,16.8c.183.935.647.731.647.731a11.046,11.046,0,0,0,.337,1.934,3.237,3.237,0,0,0,.7.984,7.56,7.56,0,0,1-.2,2,3.6,3.6,0,0,1-1.223.563c-.562.218-1.849.246-2.644.527a4.962,4.962,0,0,0-3.22,4.725H27.759A4.952,4.952,0,0,0,24.546,23.534Z"/>
+                            <path d="M9.844,20.109a4.773,4.773,0,0,0,2.348-.654c-1.09-1.652-.5-3.579-.724-5.379a2.966,2.966,0,0,0-3.284-2.869H8.156A2.976,2.976,0,0,0,4.9,14.077c-.225,1.793.4,3.938-.717,5.379a4.417,4.417,0,0,0,2.355.584h0a3.561,3.561,0,0,1-.07,1.181,1.775,1.775,0,0,1-.844.387,16.314,16.314,0,0,0-1.821.506,2.96,2.96,0,0,0-1.589,2.616H7.861a5.051,5.051,0,0,1,2.25-2.1,4.722,4.722,0,0,1,1.737-.366s.267-.422-.612-.584a5.994,5.994,0,0,1-1.35-.471C9.752,21.059,9.844,20.109,9.844,20.109Z"/>
+                            <path d="M26.156,20.109a4.773,4.773,0,0,1-2.348-.654c1.09-1.652.5-3.579.724-5.379a2.966,2.966,0,0,1,3.284-2.869h.028A2.976,2.976,0,0,1,31.1,14.077c.225,1.793-.4,3.938.717,5.379a4.417,4.417,0,0,1-2.355.584h0a3.561,3.561,0,0,0,.07,1.181,1.775,1.775,0,0,0,.844.387,16.314,16.314,0,0,1,1.821.506,2.96,2.96,0,0,1,1.589,2.616H28.139a5.051,5.051,0,0,0-2.25-2.1,4.722,4.722,0,0,0-1.737-.366s-.267-.422.612-.584a5.994,5.994,0,0,0,1.35-.471C26.248,21.059,26.156,20.109,26.156,20.109Z"/>
+                        </g>
+                    </svg>
+                    Students
+                </a>
+            </li>
+            <li>
+                <a href="./tutors.html" class="block btn-success btn-lg flex items-center font-light uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 fill-black" viewBox="0 0 21 16.8">
+                        <path
+                                d="M6.825,11.55a.751.751,0,0,0-.232.036,4.328,4.328,0,0,1-1.343.227,4.332,4.332,0,0,1-1.344-.227.749.749,0,0,0-.231-.036A3.675,3.675,0,0,0,0,15.245,1.571,1.571,0,0,0,1.575,16.8h7.35A1.571,1.571,0,0,0,10.5,15.245,3.675,3.675,0,0,0,6.825,11.55ZM5.25,10.5A3.15,3.15,0,1,0,2.1,7.35,3.15,3.15,0,0,0,5.25,10.5ZM19.425,0H6.825A1.6,1.6,0,0,0,5.25,1.627V3.15a4.152,4.152,0,0,1,2.1.584V2.1H18.9v9.45H16.8V9.45H12.6v2.1H10.1a4.182,4.182,0,0,1,1.3,2.1h8.024A1.6,1.6,0,0,0,21,12.023V1.627A1.6,1.6,0,0,0,19.425,0Z"
+                        />
+                    </svg>
+                    Tutors
+                </a>
+            </li>
+            <li>
+                <a href="./announcements.html" class="block btn btn-lg flex items-center font-light uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 fill-black" viewBox="0 0 18.239 18.239">
+                        <path d="M12.495,3.375a9.12,9.12,0,1,0,9.12,9.12A9.118,9.118,0,0,0,12.495,3.375Zm.614,9.909a.616.616,0,0,1-.614.614H8.286a.614.614,0,0,1,0-1.228h3.6V6.883a.614.614,0,1,1,1.228,0Z"
+                              transform="translate(-3.375 -3.375)"/>
+                    </svg>
+                    Announcements
+                </a>
+            </li>
+            <li>
+                <a href="./earnings.html" class="block btn btn-lg flex items-center font-light uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 fill-black" viewBox="0 0 21.48 20.406">
+                        <path d="M13.74,19.4l6.637,4.006-1.761-7.55,5.864-5.08-7.722-.655L13.74,3l-3.018,7.121L3,10.776l5.864,5.08L7.1,23.406Z"
+                              transform="translate(-3 -3)"/>
+                    </svg>
+                    Earnings
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!--  RHS: Main Content  -->
+    <section
+            :class="open ? 'lg:w-4/5 translate-x-72 lg:translate-x-0' : 'z-10'"
+            class="w-full ml-auto transition-all transform"
+    >
+        <div class="bg-white overflow-y-auto h-full transition-all">
+            <nav class="border-b">
+                <div class="content flex">
+                    <div class="ml-auto flex items-center space-x-3 py-4">
+                        <button class="w-4">
+                            <img src="./assets/img/icon-material-notifications.svg" alt="Notifications"/>
+                        </button>
+                        <div class="bg-gray-100 rounded-full aspect-[1/1] w-8"></div>
+                        <p class="text-primary text-sm font-semibold">
+                            Sontia School
+                        </p>
+                        <i class="mdi mdi-chevron-down text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content p-5 lg:p-10 space-y-8 lg:space-y-10">
+
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
