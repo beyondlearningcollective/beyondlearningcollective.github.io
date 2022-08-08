@@ -144,7 +144,33 @@
             </nav>
 
             <div class="content p-5 lg:p-10 space-y-8 lg:space-y-10">
+                <header class="flex space-x-3">
+                    <select class="input !px-14">
+                        <option value="">
+                            Add filter
+                        </option>
+                    </select>
+                    <label class="relative flex-1">
+                        <i class="mdi mdi-magnify text-xl absolute top-1/2 -translate-y-1/2 transform left-5 opacity-50"></i>
+                        <input
+                                type="text"
+                                class="input w-full !pl-16"
+                                placeholder="Search for students by name or email "
+                        />
+                    </label>
+                    <button class="btn btn-success w-56 shadow">
+                        Invite students
+                    </button>
+                </header>
 
+                <div class="rounded-md shadow-lg border p-5">
+                    <div class="space-y-10 py-40">
+                        <img src="assets/img/Icon%20ionic-ios-people.svg" alt="" class="mx-auto"/>
+                        <p class="font-bold text-center">
+                            No student has enrolled for any of your classes
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
