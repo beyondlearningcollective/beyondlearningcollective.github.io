@@ -8,7 +8,7 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .btn {
-                @apply p-1 px-2 rounded-md transition;
+                @apply p-2 px-6 rounded-md transition;
             }
 
             .btn-success {
@@ -21,7 +21,7 @@
 
             .input {
                 @apply px-5 p-3 block text-sm font-light rounded-md ;
-                @apply placeholder:text-black bg-FBFAF9 border-E2E2E3;
+                @apply placeholder:text-black/50 bg-FBFAF9 border-E2E2E3;
             }
 
             .content {
@@ -30,6 +30,19 @@
 
             [x-cloak] {
                 display: none !important;
+            }
+
+            table.table-auto {
+                @apply w-full divide-y text-xs text-center;
+            }
+
+            table.table-auto thead th,
+            table.table-auto tbody td {
+                @apply font-normal py-5;
+            }
+
+            table.table-auto tbody {
+                @apply divide-y;
             }
         }
     </style>
@@ -144,7 +157,135 @@
             </nav>
 
             <div class="content p-5 lg:p-10 space-y-8 lg:space-y-10">
+                <header class="flex space-x-3">
+                    <select class="input !px-14">
+                        <option value="">
+                            Add filter
+                        </option>
+                    </select>
+                    <label class="relative flex-1">
+                        <i class="mdi mdi-magnify text-xl absolute top-1/2 -translate-y-1/2 transform left-5 opacity-50"></i>
+                        <input
+                                type="text"
+                                class="input w-full !pl-16"
+                                placeholder="Search for students by name or email "
+                        />
+                    </label>
+                    <button class="btn btn-success w-56 shadow">
+                        Add a school
+                    </button>
+                </header>
 
+                <ul>
+                    <li>
+                       <div class="rounded-md shadow-lg border">
+                           <header class="flex space-x-10 m-4 p-3 px-6 items-center">
+                               <p class="font-semibold max-w-sm text-sm">
+                                   Bedford Virtual Technical school
+                               </p>
+                               <div class="flex items-center space-x-3 whitespace-nowrap">
+                                   <button class="btn w-20 text-sm">
+                                       Edit
+                                   </button>
+                                   <button class="btn border !p-3 !px-5 text-sm bg-success/30 hover:bg-success/20">
+                                       View Classes
+                                   </button>
+                               </div>
+                               <p class="text-xs max-w-sm">
+                                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque esse explicabo, hic illo non vitae! Consequatur deleniti dolorem eius expedita fuga, fugit in nulla perferendis recusandae sed veniam voluptatibus.
+                               </p>
+                               <button class="btn text-red-500 text-3xl">
+                                   <i class="mdi mdi-delete-forever"></i>
+                               </button>
+                           </header>
+                           <div class="">
+                               <div class="m-4 border-t py-4">
+                                   <button class="btn btn-success ml-auto block">
+                                       Add a class
+                                   </button>
+
+                                   <div class="py-20 space-y-5">
+                                       <img src="assets/img/Group%20225.svg" class="mx-auto" />
+                                       <p class="font-semibold text-center">
+                                           No class has  been created for your school.
+                                       </p>
+                                   </div>
+
+                                   <table class="table-auto">
+                                       <thead>
+                                       <tr>
+                                           <th>
+                                               Date Created
+                                           </th>
+                                           <th>
+                                               Course Name
+                                           </th>
+                                           <th>
+                                               Duration
+                                           </th>
+                                           <th>
+                                               Tutor responsible
+                                           </th>
+                                           <th>
+                                               View students
+                                           </th>
+                                           <th>
+                                               Content
+                                           </th>
+                                       </tr>
+                                       </thead>
+                                       <tbody>
+                                       <tr>
+                                           <td>
+                                               12-12-2023
+                                           </td>
+                                           <td>
+                                               Algebra
+                                           </td>
+                                           <td>
+                                               14th Feb 2021 - 15th Feb 2021
+                                           </td>
+                                           <td>
+                                               Ebenezer Franklin
+                                           </td>
+                                           <td>
+                                               26
+                                           </td>
+                                           <td>
+                                               <button>
+                                                   View
+                                               </button>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                               12-12-2023
+                                           </td>
+                                           <td>
+                                               Algebra
+                                           </td>
+                                           <td>
+                                               14th Feb 2021 - 15th Feb 2021
+                                           </td>
+                                           <td>
+                                               Ebenezer Franklin
+                                           </td>
+                                           <td>
+                                               26
+                                           </td>
+                                           <td>
+                                               <button>
+                                                   View
+                                               </button>
+                                           </td>
+                                       </tr>
+                                       </tbody>
+                                   </table>
+                               </div>
+                           </div>
+                       </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
