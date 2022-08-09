@@ -21,7 +21,7 @@
 
             .input {
                 @apply px-5 p-3 block text-sm font-light rounded-md ;
-                @apply placeholder:text-black/50 bg-FBFAF9 border-E2E2E3;
+                @apply placeholder:text-black/50 bg-FBFAF9 border border-E2E2E3;
             }
 
             .content {
@@ -65,7 +65,7 @@
     </script>
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
-<body x-data="{open: true,}">
+<body x-data="{open: true, createModal: true}">
 <main x-cloak class="h-screen w-screen overflow-hidden relative flex">
     <!--  LHS: Main Menu  -->
     <aside class="absolute inset-y-0 left-0 w-72 lg:w-1/5 flex shadow-xl z-10">
@@ -178,117 +178,188 @@
 
                 <ul>
                     <li>
-                       <div class="rounded-md shadow-lg border">
-                           <header class="flex space-x-10 m-4 p-3 px-6 items-center">
-                               <p class="font-semibold max-w-sm text-sm">
-                                   Bedford Virtual Technical school
-                               </p>
-                               <div class="flex items-center space-x-3 whitespace-nowrap">
-                                   <button class="btn w-20 text-sm">
-                                       Edit
-                                   </button>
-                                   <button class="btn border !p-3 !px-5 text-sm bg-success/30 hover:bg-success/20">
-                                       View Classes
-                                   </button>
-                               </div>
-                               <p class="text-xs max-w-sm">
-                                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque esse explicabo, hic illo non vitae! Consequatur deleniti dolorem eius expedita fuga, fugit in nulla perferendis recusandae sed veniam voluptatibus.
-                               </p>
-                               <button class="btn text-red-500 text-3xl">
-                                   <i class="mdi mdi-delete-forever"></i>
-                               </button>
-                           </header>
-                           <div class="">
-                               <div class="m-4 border-t py-4">
-                                   <button class="btn btn-success ml-auto block">
-                                       Add a class
-                                   </button>
+                        <div class="rounded-md shadow-lg border">
+                            <header class="flex space-x-10 m-4 p-3 px-6 items-center">
+                                <p class="font-semibold max-w-sm text-sm">
+                                    Bedford Virtual Technical school
+                                </p>
+                                <div class="flex items-center space-x-3 whitespace-nowrap">
+                                    <button class="btn w-20 text-sm">
+                                        Edit
+                                    </button>
+                                    <button class="btn border !p-3 !px-5 text-sm bg-success/30 hover:bg-success/20">
+                                        View Classes
+                                    </button>
+                                </div>
+                                <p class="text-xs max-w-sm">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque esse explicabo,
+                                    hic illo non vitae! Consequatur deleniti dolorem eius expedita fuga, fugit in nulla
+                                    perferendis recusandae sed veniam voluptatibus.
+                                </p>
+                                <button class="btn text-red-500 text-3xl">
+                                    <i class="mdi mdi-delete-forever"></i>
+                                </button>
+                            </header>
+                            <div class="">
+                                <div class="m-4 border-t py-4">
+                                    <button
+                                            @click="createModal = true"
+                                            type="button"
+                                            class="btn btn-success ml-auto block"
+                                    >
+                                        Add a class
+                                    </button>
 
-                                   <div class="py-20 space-y-5">
-                                       <img src="assets/img/Group%20225.svg" class="mx-auto" />
-                                       <p class="font-semibold text-center">
-                                           No class has  been created for your school.
-                                       </p>
-                                   </div>
+                                    <div class="py-20 space-y-5">
+                                        <img src="assets/img/Group%20225.svg" class="mx-auto"/>
+                                        <p class="font-semibold text-center">
+                                            No class has been created for your school.
+                                        </p>
+                                    </div>
 
-                                   <table class="table-auto">
-                                       <thead>
-                                       <tr>
-                                           <th>
-                                               Date Created
-                                           </th>
-                                           <th>
-                                               Course Name
-                                           </th>
-                                           <th>
-                                               Duration
-                                           </th>
-                                           <th>
-                                               Tutor responsible
-                                           </th>
-                                           <th>
-                                               View students
-                                           </th>
-                                           <th>
-                                               Content
-                                           </th>
-                                       </tr>
-                                       </thead>
-                                       <tbody>
-                                       <tr>
-                                           <td>
-                                               12-12-2023
-                                           </td>
-                                           <td>
-                                               Algebra
-                                           </td>
-                                           <td>
-                                               14th Feb 2021 - 15th Feb 2021
-                                           </td>
-                                           <td>
-                                               Ebenezer Franklin
-                                           </td>
-                                           <td>
-                                               26
-                                           </td>
-                                           <td>
-                                               <button>
-                                                   View
-                                               </button>
-                                           </td>
-                                       </tr>
-                                       <tr>
-                                           <td>
-                                               12-12-2023
-                                           </td>
-                                           <td>
-                                               Algebra
-                                           </td>
-                                           <td>
-                                               14th Feb 2021 - 15th Feb 2021
-                                           </td>
-                                           <td>
-                                               Ebenezer Franklin
-                                           </td>
-                                           <td>
-                                               26
-                                           </td>
-                                           <td>
-                                               <button>
-                                                   View
-                                               </button>
-                                           </td>
-                                       </tr>
-                                       </tbody>
-                                   </table>
-                               </div>
-                           </div>
-                       </div>
+                                    <table class="table-auto">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Date Created
+                                            </th>
+                                            <th>
+                                                Course Name
+                                            </th>
+                                            <th>
+                                                Duration
+                                            </th>
+                                            <th>
+                                                Tutor responsible
+                                            </th>
+                                            <th>
+                                                View students
+                                            </th>
+                                            <th>
+                                                Content
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                12-12-2023
+                                            </td>
+                                            <td>
+                                                Algebra
+                                            </td>
+                                            <td>
+                                                14th Feb 2021 - 15th Feb 2021
+                                            </td>
+                                            <td>
+                                                Ebenezer Franklin
+                                            </td>
+                                            <td>
+                                                26
+                                            </td>
+                                            <td>
+                                                <button>
+                                                    View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                12-12-2023
+                                            </td>
+                                            <td>
+                                                Algebra
+                                            </td>
+                                            <td>
+                                                14th Feb 2021 - 15th Feb 2021
+                                            </td>
+                                            <td>
+                                                Ebenezer Franklin
+                                            </td>
+                                            <td>
+                                                26
+                                            </td>
+                                            <td>
+                                                <button>
+                                                    View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
     </section>
 </main>
+
+<!-- Main modal -->
+<div
+        x-show="createModal"
+        tabindex="-1"
+        aria-hidden="true"
+        class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full bg-black/50 flex flex-col items-center justify-center"
+>
+    <div class="relative p-4 w-full max-w-5xl h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-between items-start p-10 pb-0 rounded-t">
+                <h3 class="text-2xl text-gray-900 dark:text-white">
+                    Create a class
+                </h3>
+                <button
+                        @click="createModal = false"
+                        type="button"
+                        class="text-red-400 bg-transparent hover:bg-gray-200 hover:text-red-800 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                    <svg aria-hidden="true" class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6 w-full lg:w-2/3 mx-auto">
+                <form @submit.prevent="createModal = false" class="">
+                    <div class="grid grid-cols-2 gap-5">
+                        <input type="text" class="input col-span-2" placeholder="Class Name"/>
+                        <input type="text" class="input" placeholder="Class time"/>
+                        <input type="text" class="input" placeholder="Days to be taken"/>
+                        <input type="text" class="input col-span-2" placeholder="Class start to end date"/>
+                        <textarea
+                                class="input col-span-2"
+                                placeholder="Description of this class, tell your prospective students why they should..."
+                        ></textarea>
+                        <div class="input col-span-2 text-center py-5">
+                            <i class="mdi mdi-cloud-upload text-gray-500 text-3xl"></i>
+                            <p class="text-xs text-gray-500">
+                                Upload class display picture
+                            </p>
+                        </div>
+                        <input type="text" class="input" placeholder="Course Price"/>
+                        <select class="input">
+                            <option>Payment type</option>
+                        </select>
+                        <select class="input col-span-2">
+                            <option>Teaching method</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-success shadow block mx-auto mt-10 w-48 h-14">
+                        Create Class
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
