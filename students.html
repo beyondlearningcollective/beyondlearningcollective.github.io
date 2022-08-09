@@ -249,17 +249,25 @@
                     </table>
                 </div>
 
-                <div class="rounded-md shadow-lg border p-10">
+                <div x-data="{tab: 'manually'}" class="rounded-md shadow-lg border p-10">
                     <ul class="flex items-center space-x-10 text-gray-400">
-                        <li class="font-semibold text-success border-b-2 border-success py-1">
+                        <li
+                                @click="tab = 'manually'"
+                                :class="tab == 'manually' ? 'font-semibold text-success border-b-2 border-success ':''"
+                                class="py-1 cursor-pointer transition-all"
+                        >
                             Add manually
                         </li>
-                        <li class="py-1">
+                        <li
+                                @click="tab = 'csv'"
+                                :class="tab == 'csv' ? 'font-semibold text-success border-b-2 border-success ':''"
+                                class="py-1 cursor-pointer transition-all"
+                        >
                             Add by CSV
                         </li>
                     </ul>
 
-                    <form class="max-w-2xl mx-auto pt-10">
+                    <form x-show="tab == 'manually'" class="max-w-2xl mx-auto pt-10">
                         <div class="space-y-2">
                             <p class="font-semibold">
                                 First student
@@ -279,6 +287,73 @@
                             + Add more students
                         </button>
                         <button type="submit" class="btn btn-success shadow block mx-auto mt-20 w-48 h-14">
+                            Invite students
+                        </button>
+                    </form>
+
+                    <form x-show="tab == 'csv'" class="pt-10">
+                        <div class="max-w-2xl mx-auto">
+                            <div class="rounded bg-gray-100 text-center h-48 flex flex-col items-center justify-center">
+                                <i class="mdi mdi-cloud-upload text-5xl text-gray-500"></i>
+                                <p class="text-xs">
+                                    Upload a csv document in with a list of students in the format below
+                                </p>
+                                <p class="text-xs font-semibold">
+                                    First Name | Last Name | Email Address | Phone Number
+                                </p>
+                            </div>
+                        </div>
+
+                        <table class="table-auto text-gray-500 !text-sm">
+                            <thead>
+                            <tr>
+                                <th>
+                                    First name
+                                </th>
+                                <th>
+                                    Last name
+                                </th>
+                                <th>
+                                    Students email
+                                </th>
+                                <th>
+                                    Phone number
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Peter
+                                </td>
+                                <td>
+                                    Branson
+                                </td>
+                                <td>
+                                    Peter@gmail.com
+                                </td>
+                                <td>
+                                    0269099281
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Peter
+                                </td>
+                                <td>
+                                    Branson
+                                </td>
+                                <td>
+                                    Peter@gmail.com
+                                </td>
+                                <td>
+                                    0269099281
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <button type="submit" class="btn btn-success shadow block mx-auto mt-10 w-48 h-14">
                             Invite students
                         </button>
                     </form>
