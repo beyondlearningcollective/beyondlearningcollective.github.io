@@ -15,6 +15,10 @@
                 @apply bg-success text-white hover:opacity-90 fill-white;
             }
 
+            .btn-outline-success {
+                @apply text-success border border-success bg-FBFAF9;
+            }
+
             .btn-lg {
                 @apply p-3 px-5 rounded-xl;
             }
@@ -65,8 +69,8 @@
     </script>
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
-<body x-data="{open: true, createModal: true}">
-<main x-cloak class="h-screen w-screen overflow-hidden relative flex">
+<body x-cloak x-data="{open: true, createClassModal: false, createSchoolModal: false, createClassSuccessModal: false}">
+<main class="h-screen w-screen overflow-hidden relative flex">
     <!--  LHS: Main Menu  -->
     <aside class="absolute inset-y-0 left-0 w-72 lg:w-1/5 flex shadow-xl z-10">
         <ul class="flex flex-col space-y-8 overflow-y-auto flex-1 p-5 pb-0">
@@ -171,7 +175,7 @@
                                 placeholder="Search for students by name or email "
                         />
                     </label>
-                    <button class="btn btn-success w-56 shadow">
+                    <button @click="createSchoolModal = true" type="button" class="btn btn-success w-56 shadow">
                         Add a school
                     </button>
                 </header>
@@ -203,7 +207,7 @@
                             <div class="">
                                 <div class="m-4 border-t py-4">
                                     <button
-                                            @click="createModal = true"
+                                            @click="createClassModal = true"
                                             type="button"
                                             class="btn btn-success ml-auto block"
                                     >
@@ -297,9 +301,51 @@
     </section>
 </main>
 
-<!-- Main modal -->
+<!-- create school modal -->
 <div
-        x-show="createModal"
+        x-show="createSchoolModal"
+        tabindex="-1"
+        aria-hidden="true"
+        class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full bg-black/50 flex flex-col items-center justify-center"
+>
+    <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
+        <!-- Modal content -->
+        <form @submit.prevent="createSchoolModal = false; createClassModal = true;" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-between items-start p-10 pb-0 rounded-t">
+                <h3 class="text-2xl text-gray-900 dark:text-white">
+                    Add a school
+                </h3>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6 w-full lg:w-3/4 mx-auto">
+                <div class="grid gap-5">
+                    <input type="text" class="input" placeholder="Name of the school"/>
+                    <textarea
+                            class="input"
+                            placeholder="Description of the school, what courses are thought aswell. "
+                    ></textarea>
+                </div>
+
+            </div>
+            <!-- Modal Footer -->
+            <footer class="p-10">
+                <div class="grid grid-cols-2 gap-5 h-14">
+                    <button type="submit" class="btn btn-success shadow block">
+                        Add a class
+                    </button>
+                    <button @click="createSchoolModal = false" type="button" class="btn btn-outline-success shadow block">
+                        Go back to school page
+                    </button>
+                </div>
+            </footer>
+        </form>
+    </div>
+</div>
+
+<!-- create class modal -->
+<div
+        x-show="createClassModal"
         tabindex="-1"
         aria-hidden="true"
         class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full bg-black/50 flex flex-col items-center justify-center"
@@ -313,7 +359,7 @@
                     Create a class
                 </h3>
                 <button
-                        @click="createModal = false"
+                        @click="createClassModal = false"
                         type="button"
                         class="text-red-400 bg-transparent hover:bg-gray-200 hover:text-red-800 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                 >
@@ -328,7 +374,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6 w-full lg:w-2/3 mx-auto">
-                <form @submit.prevent="createModal = false" class="">
+                <form @submit.prevent="createClassModal = false; createClassSuccessModal = true;" class="">
                     <div class="grid grid-cols-2 gap-5">
                         <input type="text" class="input col-span-2" placeholder="Class Name"/>
                         <input type="text" class="input" placeholder="Class time"/>
@@ -359,6 +405,56 @@
                 </form>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- create class:success modal -->
+<div
+        x-show="createClassSuccessModal"
+        tabindex="-1"
+        aria-hidden="true"
+        class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full bg-black/50 flex flex-col items-center justify-center"
+>
+    <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
+        <!-- Modal content -->
+        <form @submit.prevent="createClassSuccessModal = false" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-between items-start p-10 pb-0 rounded-t">
+                <h3 class="text-2xl text-gray-900 dark:text-white">
+                </h3>
+                <button
+                        @click="createClassSuccessModal = false"
+                        type="button"
+                        class="text-red-400 bg-transparent hover:bg-gray-200 hover:text-red-800 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                    <svg aria-hidden="true" class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6 w-full lg:w-3/4 mx-auto flex flex-col items-center justify-center">
+                <h2 class="text-2xl text-center">
+                    Class successfully created
+                </h2>
+                <i class="mdi mdi-check-circle text-success text-7xl"></i>
+            </div>
+            <!-- Modal Footer -->
+            <footer class="p-10">
+                <div class="grid grid-cols-2 gap-5 h-14">
+                    <button type="submit" class="btn btn-success shadow block">
+                        Add Content for this course
+                    </button>
+                    <button @click="createClassSuccessModal = false" type="button" class="btn btn-outline-success shadow block">
+                        Add Tutor
+                    </button>
+                </div>
+            </footer>
+        </form>
     </div>
 </div>
 </body>
