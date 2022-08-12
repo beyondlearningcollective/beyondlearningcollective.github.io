@@ -31,6 +31,19 @@
             [x-cloak] {
                 display: none !important;
             }
+
+            table.table-auto {
+                @apply w-full divide-y text-xs text-center;
+            }
+
+            table.table-auto thead th,
+            table.table-auto tbody td {
+                @apply font-normal py-5;
+            }
+
+            table.table-auto tbody {
+                @apply divide-y;
+            }
         }
     </style>
     <script>
@@ -144,7 +157,64 @@
             </nav>
 
             <div class="content p-5 lg:p-10 space-y-8 lg:space-y-10">
+                <header class="flex space-x-3">
+                    <select class="input !px-14">
+                        <option value="">
+                            Add filter
+                        </option>
+                    </select>
+                    <label class="relative flex-1">
+                        <i class="mdi mdi-magnify text-xl absolute top-1/2 -translate-y-1/2 transform left-5 opacity-50"></i>
+                        <input
+                                type="text"
+                                class="input w-full !pl-16"
+                                placeholder="Search"
+                        />
+                    </label>
+                </header>
 
+                <div class="rounded-md shadow-lg border p-3">
+                    <table class="table-auto text-gray-500 !text-sm">
+                        <thead>
+                        <tr>
+                            <th>
+                                Date registered
+                            </th>
+                            <th>
+                                Student Name
+                            </th>
+                            <th>
+                                Course Name
+                            </th>
+                            <th>
+                                Duration
+                            </th>
+                            <th>
+                                Fee
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                22-8-2022
+                            </td>
+                            <td>
+                                Sonia Anderson
+                            </td>
+                            <td>
+                                Algebra
+                            </td>
+                            <td>
+                                14th Feb 2021 - 15th Feb 2021
+                            </td>
+                            <td>
+                                $70
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>

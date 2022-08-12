@@ -31,6 +31,19 @@
             [x-cloak] {
                 display: none !important;
             }
+
+            table.table-auto {
+                @apply w-full divide-y text-xs text-center;
+            }
+
+            table.table-auto thead th,
+            table.table-auto tbody td {
+                @apply font-normal py-5;
+            }
+
+            table.table-auto tbody {
+                @apply divide-y;
+            }
         }
     </style>
     <script>
@@ -144,7 +157,198 @@
             </nav>
 
             <div class="content p-5 lg:p-10 space-y-8 lg:space-y-10">
+                <header class="flex space-x-3">
+                    <select class="input !px-14">
+                        <option value="">
+                            Add filter
+                        </option>
+                    </select>
+                    <label class="relative flex-1">
+                        <i class="mdi mdi-magnify text-xl absolute top-1/2 -translate-y-1/2 transform left-5 opacity-50"></i>
+                        <input
+                                type="text"
+                                class="input w-full !pl-16"
+                                placeholder="Search for students by name or email "
+                        />
+                    </label>
+                    <button class="btn btn-success w-56 shadow">
+                        Invite Tutors +
+                    </button>
+                </header>
 
+                <div class="rounded-md shadow-lg border p-5">
+                    <div class="space-y-10 py-40">
+                        <img src="assets/img/Icon%20ionic-ios-people.svg" alt="" class="mx-auto"/>
+                        <p class="font-bold text-center">
+                            No tutor has been invited to teach in your school
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rounded-md shadow-lg border p-3">
+                    <table class="table-auto text-gray-500 !text-sm">
+                        <thead>
+                        <tr>
+                            <th>
+                                Tutors name
+                            </th>
+                            <th>
+                                Tutors email
+                            </th>
+                            <th>
+                                Tutors Number
+                            </th>
+                            <th>
+                                Tutors status
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Peter Branson
+                            </td>
+                            <td>
+                                Peter@gmail.com
+                            </td>
+                            <td>
+                                0269099281
+                            </td>
+                            <td>
+                                <p class="text-black">
+                                    Activated
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Peter Branson
+                            </td>
+                            <td>
+                                Peter@gmail.com
+                            </td>
+                            <td>
+                                0269099281
+                            </td>
+                            <td>
+                                <p class="">
+                                    Unactivated
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div x-data="{tab: 'manually'}" class="rounded-md shadow-lg border p-10">
+                    <ul class="flex items-center space-x-10 text-gray-400">
+                        <li
+                                @click="tab = 'manually'"
+                                :class="tab == 'manually' ? 'font-semibold text-success border-b-2 border-success ':''"
+                                class="py-1 cursor-pointer transition-all"
+                        >
+                            Add manually
+                        </li>
+                        <li
+                                @click="tab = 'csv'"
+                                :class="tab == 'csv' ? 'font-semibold text-success border-b-2 border-success ':''"
+                                class="py-1 cursor-pointer transition-all"
+                        >
+                            Add by CSV
+                        </li>
+                    </ul>
+
+                    <form x-show="tab == 'manually'" class="max-w-2xl mx-auto pt-10">
+                        <div class="space-y-2">
+                            <p class="font-semibold">
+                                First tutor
+                            </p>
+                            <div class="grid grid-cols-2 gap-5">
+                                <input type="text" class="input !bg-white" placeholder="Full name"/>
+                                <input type="email" class="input !bg-white" placeholder="Email"/>
+                                <input type="tel" class="input !bg-white" placeholder="Phone"/>
+                                <select class="input !bg-white">
+                                    <option value="">
+                                        Select class
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="text-success font-semibold block ml-auto mt-5">
+                            + Add more tutors
+                        </button>
+                        <button type="submit" class="btn btn-success shadow block mx-auto mt-20 w-48 h-14">
+                            Invite tutors
+                        </button>
+                    </form>
+
+                    <form x-show="tab == 'csv'" class="pt-10">
+                        <div class="max-w-2xl mx-auto">
+                            <div class="rounded bg-gray-100 text-center h-48 flex flex-col items-center justify-center">
+                                <i class="mdi mdi-cloud-upload text-5xl text-gray-500"></i>
+                                <p class="text-xs">
+                                    Upload a csv document in with a list of students in the format below
+                                </p>
+                                <p class="text-xs font-semibold">
+                                    First Name | Last Name | Email Address | Phone Number
+                                </p>
+                            </div>
+                        </div>
+
+                        <table class="table-auto text-gray-500 !text-sm">
+                            <thead>
+                            <tr>
+                                <th>
+                                    First name
+                                </th>
+                                <th>
+                                    Last name
+                                </th>
+                                <th>
+                                    Tutors email
+                                </th>
+                                <th>
+                                    Phone number
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Peter
+                                </td>
+                                <td>
+                                    Branson
+                                </td>
+                                <td>
+                                    Peter@gmail.com
+                                </td>
+                                <td>
+                                    0269099281
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Peter
+                                </td>
+                                <td>
+                                    Branson
+                                </td>
+                                <td>
+                                    Peter@gmail.com
+                                </td>
+                                <td>
+                                    0269099281
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <button type="submit" class="btn btn-success shadow block mx-auto mt-10 w-48 h-14">
+                            Invite students
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

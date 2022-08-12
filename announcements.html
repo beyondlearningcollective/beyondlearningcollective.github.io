@@ -12,7 +12,7 @@
             }
 
             .btn-success {
-                @apply bg-success text-white hover:opacity-90;
+                @apply bg-success text-white hover:opacity-90 fill-white;
             }
 
             .btn-lg {
@@ -30,6 +30,19 @@
 
             [x-cloak] {
                 display: none !important;
+            }
+
+            table.table-auto {
+                @apply w-full divide-y text-xs text-center;
+            }
+
+            table.table-auto thead th,
+            table.table-auto tbody td {
+                @apply font-normal py-5;
+            }
+
+            table.table-auto tbody {
+                @apply divide-y;
             }
         }
     </style>
@@ -52,7 +65,7 @@
     </script>
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
-<body x-data="{open: true,}">
+<body x-data="{open: true, createModal: false, announcements: 0}">
 <main x-cloak class="h-screen w-screen overflow-hidden relative flex">
     <!--  LHS: Main Menu  -->
     <aside class="absolute inset-y-0 left-0 w-72 lg:w-1/5 flex shadow-xl z-10">
@@ -144,10 +157,124 @@
             </nav>
 
             <div class="content p-5 lg:p-10 space-y-8 lg:space-y-10">
+                <header class="flex space-x-3">
+                    <select class="input !px-14">
+                        <option value="">
+                            Add filter
+                        </option>
+                    </select>
+                    <label class="relative flex-1">
+                        <i class="mdi mdi-magnify text-xl absolute top-1/2 -translate-y-1/2 transform left-5 opacity-50"></i>
+                        <input
+                                type="text"
+                                class="input w-full !pl-16"
+                                placeholder="Search for announcements"
+                        />
+                    </label>
+                    <button @click="createModal = true" class="btn btn-success w-56 shadow">
+                        Create announcement
+                    </button>
+                </header>
 
+                <div x-show="announcements == 0" class="rounded-md shadow-lg border p-5">
+                    <div class="space-y-10 py-40">
+                        <img src="assets/img/Icon%20ionic-ios-people.svg" alt="" class="mx-auto"/>
+                        <p class="font-bold text-center">
+                            No announcements
+                        </p>
+                    </div>
+                </div>
+
+                <div x-show="announcements > 0" class="rounded-md shadow-lg border p-3">
+                    <table class="table-auto text-gray-500 !text-sm">
+                        <thead>
+                        <tr>
+                            <th>
+                                Created at
+                            </th>
+                            <th>
+                                Topic
+                            </th>
+                            <th>
+                                Assigned to
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <template x-for="i in announcements" :key="i">
+                            <tr>
+                                <td>
+                                    22-8-2022
+                                </td>
+                                <td>
+                                    New books available
+                                </td>
+                                <td>
+                                    Grade 4
+                                </td>
+                                <td>
+                                    <a href="#" class="text-primary hover:underline">
+                                        View
+                                    </a>
+                                </td>
+                                <td>
+                                    <button @click="announcements--">
+                                        <i class="mdi mdi-delete-forever text-red-500 text-3xl"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </template>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
 </main>
+
+<!-- create announcement modal -->
+<div
+        x-show="createModal"
+        tabindex="-1"
+        aria-hidden="true"
+        class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full bg-black/50 flex flex-col items-center justify-center"
+>
+    <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
+        <!-- Modal content -->
+        <form @submit.prevent="announcements++; createModal = false" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-between items-start p-10 pb-0 rounded-t">
+                <h3 class="text-2xl text-gray-900 dark:text-white">
+                    Announcement
+                </h3>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6 w-full lg:w-3/4 mx-auto">
+                <div class="grid gap-5">
+                    <input type="text" class="input" placeholder="Topic"/>
+                    <input type="text" class="input" placeholder="Assignment assigned to ?"/>
+                    <textarea
+                            class="input"
+                            placeholder="Description of assignment"
+                            rows="7"
+                    ></textarea>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <footer class="p-10">
+                <div class="grid grid-cols-2 gap-5 h-14">
+                    <button type="submit" class="btn btn-success shadow block">
+                        Submit
+                    </button>
+                    <button @click="createModal = false" type="button" class="btn btn-outline-success shadow block">
+                        Go back
+                    </button>
+                </div>
+            </footer>
+        </form>
+    </div>
+</div>
 </body>
 </html>
