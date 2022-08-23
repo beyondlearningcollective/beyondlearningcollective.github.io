@@ -262,9 +262,9 @@
                                                 26
                                             </td>
                                             <td>
-                                                <button>
+                                                <a href="course-content.html">
                                                     View
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -284,9 +284,9 @@
                                                 26
                                             </td>
                                             <td>
-                                                <button>
+                                                <a href="course-content.html">
                                                     View
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -310,10 +310,10 @@
 >
     <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
         <!-- Modal content -->
-        <form @submit.prevent="createSchoolModal = false; createClassModal = true;" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <form @submit.prevent="createSchoolModal = false; createClassModal = true;" class="relative bg-white rounded-lg shadow">
             <!-- Modal header -->
             <div class="flex justify-between items-start p-10 pb-0 rounded-t">
-                <h3 class="text-2xl text-gray-900 dark:text-white">
+                <h3 class="text-2xl text-gray-900">
                     Add a school
                 </h3>
             </div>
@@ -352,16 +352,16 @@
 >
     <div class="relative p-4 w-full max-w-5xl h-full md:h-auto">
         <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div class="relative bg-white rounded-lg shadow">
             <!-- Modal header -->
             <div class="flex justify-between items-start p-10 pb-0 rounded-t">
-                <h3 class="text-2xl text-gray-900 dark:text-white">
+                <h3 class="text-2xl text-gray-900">
                     Create a class
                 </h3>
                 <button
                         @click="createClassModal = false"
                         type="button"
-                        class="text-red-400 bg-transparent hover:bg-gray-200 hover:text-red-800 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        class="text-red-400 bg-transparent hover:bg-gray-200 hover:text-red-800 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                 >
                     <svg aria-hidden="true" class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20"
                          xmlns="http://www.w3.org/2000/svg">
@@ -417,15 +417,18 @@
 >
     <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
         <!-- Modal content -->
-        <form @submit.prevent="createClassSuccessModal = false" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <form
+                @submit.prevent="createClassSuccessModal = false; window.location.href = 'course-content.html'"
+                class="relative bg-white rounded-lg shadow"
+        >
             <!-- Modal header -->
             <div class="flex justify-between items-start p-10 pb-0 rounded-t">
-                <h3 class="text-2xl text-gray-900 dark:text-white">
+                <h3 class="text-2xl text-gray-900">
                 </h3>
                 <button
                         @click="createClassSuccessModal = false"
                         type="button"
-                        class="text-red-400 bg-transparent hover:bg-gray-200 hover:text-red-800 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        class="text-red-400 bg-transparent hover:bg-gray-200 hover:text-red-800 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                 >
                     <svg aria-hidden="true" class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20"
                          xmlns="http://www.w3.org/2000/svg">
